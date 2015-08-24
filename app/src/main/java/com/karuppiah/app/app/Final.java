@@ -58,6 +58,8 @@ public class Final extends AppCompatActivity {
 
                 Intent i = new Intent(Final.this, Dashboard.class);
                 startActivity(i);
+
+                finish();
             }
         });
 
@@ -119,10 +121,4 @@ public class Final extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     */
-
-    @Override
-    protected void onPause() {
-        finish();
-        super.onPause();
-    }
 }

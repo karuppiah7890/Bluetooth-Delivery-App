@@ -53,6 +53,8 @@ public class Dashboard extends ActionBarActivity implements View.OnClickListener
 
                 startActivity(i);
 
+                finishFromChild(this);
+
                 break;
 
             case R.id.bUpload :
@@ -116,7 +118,7 @@ public class Dashboard extends ActionBarActivity implements View.OnClickListener
         if(f.exists())
             f.delete();
 
-        Toast.makeText(this,"Uploaded the details succefully!",Toast.LENGTH_LONG);
+        Toast.makeText(this, "Uploaded the details succefully!",Toast.LENGTH_LONG);
 
     }
 
@@ -145,9 +147,4 @@ public class Dashboard extends ActionBarActivity implements View.OnClickListener
     }
     */
 
-    @Override
-    protected void onPause() {
-        finishFromChild(this);
-        super.onPause();
-    }
 }

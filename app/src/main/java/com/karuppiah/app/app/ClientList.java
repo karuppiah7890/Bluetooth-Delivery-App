@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,10 +23,7 @@ import com.firebase.client.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.LinkedList;
@@ -127,6 +123,8 @@ public class ClientList extends ListActivity {
 
         Intent i = new Intent(ClientList.this, MaterialList.class);
         startActivity(i);
+
+        finishFromChild(this);
     }
 
     @Override
@@ -204,9 +202,4 @@ public class ClientList extends ListActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    @Override
-    protected void onPause() {
-        finishFromChild(this);
-        super.onPause();
-    }
 }

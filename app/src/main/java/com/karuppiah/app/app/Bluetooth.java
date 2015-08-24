@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -41,6 +39,8 @@ public class Bluetooth extends AppCompatActivity {
 
                 Intent i = new Intent(Bluetooth.this, Final.class);
                 startActivity(i);
+
+                finishFromChild(Bluetooth.this);
             }
         });
     }
@@ -69,9 +69,4 @@ public class Bluetooth extends AppCompatActivity {
     }
     */
 
-    @Override
-    protected void onPause() {
-        finishFromChild(this);
-        super.onPause();
-    }
 }

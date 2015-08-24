@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvStatus;
 
     SharedPreferences sharedpref = null;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Firebase ref = new Firebase("https://sizzling-inferno-5033.firebaseio.com/Users");
 
-        sharedpref = getSharedPreferences("Login",Context.MODE_PRIVATE);
+        sharedpref = getSharedPreferences("Login", Context.MODE_PRIVATE);
 
         tvStatus = (TextView) findViewById(R.id.tvStatus);
         etUsername = (EditText) findViewById(R.id.etUsername);
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
 
-                if(isNetworkAvailable()) {
+                if (isNetworkAvailable()) {
 
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onDataChange(DataSnapshot snapshot) {
 
                             if (!username.equals("") && !password.equals("")) {
+
                                 String value = (String) snapshot.child(username).getValue();
 
                                 if (value != null) {
@@ -73,14 +74,18 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("password", password);
                                         editor.apply();
 
-                                        Intent i = new Intent(LoginActivity.this,Dashboard.class);
+                                        Intent i = new Intent(LoginActivity.this, Dashboard.class);
 
                                         startActivity(i);
 
-                                    } else
+                                    } else {
                                         tvStatus.setText("Wrong Password!");
-                                } else
+
+                                    }
+                                } else {
                                     tvStatus.setText("Wrong Username");
+
+                                }
                             }
                         }
 
@@ -90,11 +95,9 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
 
-                }
-
-                else {
-                    String uname = sharedpref.getString("username","");
-                    String pwd = sharedpref.getString("password","");
+                } else {
+                    String uname = sharedpref.getString("username", "");
+                    String pwd = sharedpref.getString("password", "");
 
                     if (!username.equals("") && !password.equals("")) {
 
@@ -103,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (password.equals(pwd)) {
                                 tvStatus.setText("Logged In!");
 
-                                Intent i = new Intent(LoginActivity.this,Dashboard.class);
+                                Intent i = new Intent(LoginActivity.this, Dashboard.class);
 
                                 startActivity(i);
 
@@ -112,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Not local login. Connect to Internet!", Toast.LENGTH_SHORT).show();
 
                             }
-                        }else {
+                        } else {
                             //tvStatus.setText("Wrong Username / New Account ? Connect To Internet");
                             Toast.makeText(LoginActivity.this, "Not local login. Connect to Internet!", Toast.LENGTH_SHORT).show();
                         }

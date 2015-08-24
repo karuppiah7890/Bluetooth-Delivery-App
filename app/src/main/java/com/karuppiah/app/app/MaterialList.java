@@ -97,13 +97,10 @@ public class MaterialList extends ListActivity {
             @Override
             public void onClick(View v) {
                 if (flag == 0) {
-                    if(isNetworkAvailable())
-                    {
+                    if (isNetworkAvailable()) {
                         update();
                         flag = 1;
-                    }
-
-                    else
+                    } else
                         Toast.makeText(MaterialList.this, "Connect to Internet!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -125,6 +122,8 @@ public class MaterialList extends ListActivity {
 
         Intent i = new Intent(MaterialList.this, Bluetooth.class);
         startActivity(i);
+
+        finishFromChild(this);
     }
 
     @Override
@@ -204,9 +203,4 @@ public class MaterialList extends ListActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    @Override
-    protected void onPause() {
-        finishFromChild(this);
-        super.onPause();
-    }
 }
