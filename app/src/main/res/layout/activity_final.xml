@@ -40,17 +40,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Another"
-        android:id="@+id/btAnother"
+        android:text="Print"
+        android:id="@+id/bPrint"
         android:layout_below="@+id/tvWeight"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Print Bill"
-        android:id="@+id/btPrint"
-        android:layout_below="@+id/btAnother"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>
