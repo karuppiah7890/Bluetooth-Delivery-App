@@ -138,9 +138,6 @@ public class MaterialList extends ListActivity {
         int id = item.getItemId();
 
         if (id == R.id.UpdateMaterials) {
-
-
-
             return true;
         }
 
@@ -152,7 +149,6 @@ public class MaterialList extends ListActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-
                 FileWriter fr = null;
                 BufferedWriter br = null;
 

@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvStatus;
 
     SharedPreferences sharedpref = null;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
